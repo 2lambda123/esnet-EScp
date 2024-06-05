@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import os
-import random
+import secrets
 
 try: 
   os.mkdir("/tmp/test_src_1k")
@@ -15,7 +15,7 @@ try:
     os.mkdir("/tmp/test_src_1k/%d" % j)
     for i in range(1024*128):
       with open( "/tmp/test_src_1k/%d/test_%07d" % (j, i), "wb") as fi:
-        sz = random.randint( 0, 4096 )
+        sz = secrets.SystemRandom().randint(0, 4096 )
         fi.write( os.urandom(sz) )
 finally: 
   pass
